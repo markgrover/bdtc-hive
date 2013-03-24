@@ -51,6 +51,51 @@ Load the dataset
 hadoop fs -mkdir /user/hive/warehouse/flight_data
 </code>
 </pre>
+* Verify it got loaded
+<pre>
+<code>
+hadoop fs -ls /
+</code>
+</pre>
+* Create hive table
+<pre>
+<code>
+CREATE EXTERNAL TABLE flight_data(
+year int,
+month int,
+day int,
+day_of_week int,
+dep_time int
+crs_dep_time int,
+arr_time int,
+crs_arr_time int,
+unique_carrier string,
+flight_num int,
+tail_num string,
+actual_elapsed_time int,
+crs_elapsed_time int,
+air_time int,
+arr_delay int,
+dep_delay int,
+origin string,
+dest string,
+distance int,
+taxi_in int,
+taxi_out int,
+cancelled boolean,
+cancellation_code string,
+diverted boolean,
+carrier_delay string,
+weather_delay string,
+nas_delay string,
+security_delay string,
+late_aircraft_delay string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/hive/warehouse/flight_data';
+</code>
+<pre>
 
 Miscellaneous notes
 ===================
