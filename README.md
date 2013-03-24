@@ -16,6 +16,7 @@ bzip2 -d 2008.csv.bz2
 </code>
 </pre>
 The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
+3. Ensure that your virtual machine can connect to the internet.
 
 Hadoop commands
 ===============
