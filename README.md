@@ -18,6 +18,7 @@ bzip2 -d 2008.csv.bz2
 The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
 3. Ensure that your virtual machine can connect to the internet.
 FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known bug related to internet connectivity of Demo VM. See [here](http://askubuntu.com/questions/211603/problems-with-nat-adapater-since-upgrade-to-ubuntu-12-10) for more details.
+
 Hadoop commands
 ===============
 * Pi job
