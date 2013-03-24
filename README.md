@@ -65,7 +65,7 @@ year int,
 month int,
 day int,
 day_of_week int,
-dep_time int
+dep_time int,
 crs_dep_time int,
 arr_time int,
 crs_arr_time int,
