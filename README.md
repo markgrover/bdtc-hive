@@ -19,8 +19,14 @@ The dataset contains on-time flight performance data from 2008, originally relea
 3. Ensure that your virtual machine can connect to the internet.
 FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known bug related to internet connectivity of Demo VM. See [here](http://askubuntu.com/questions/211603/problems-with-nat-adapater-since-upgrade-to-ubuntu-12-10) for more details.
 
-Hadoop commands
+Run Hadoop examples
 ===============
+* Verify contents of HDFS
+<pre>
+<code>
+hadoop fs -ls /
+</code>
+</pre>
 * Pi job
 <pre>
 <code>
@@ -36,3 +42,21 @@ hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop*examples.jar wordcount input ou
 </code>
 </pre>
 By the way, if you re-run this job, it will fail. Why is that?
+
+Load the dataset
+================
+* On-time flight performance data from 2008
+<pre>
+<code>
+hadoop fs -mkdir /user/hive/warehouse/flight_data
+</code>
+</pre>
+
+Miscellaneous notes
+===================
+To disable safe mode:
+<pre>
+<code>
+hadoop dfsadmin -safemode leave
+</code>
+</pre>
