@@ -95,7 +95,7 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LOCATION '/user/hive/warehouse/flight_data';
 </code>
-<pre>
+</pre>
 
 Miscellaneous notes
 ===================
