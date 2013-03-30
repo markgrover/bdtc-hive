@@ -6,7 +6,7 @@ Presentation on Apache Hive at Big Data TechCon
 To do before the presentation
 =============================
 1. Set up and install Hadoop and Hive. Easiest way is to actually download a demo VM with Hadoop, Hive and HBase installed. Cloudera Demo VMs are available [here](https://ccp.cloudera.com/display/SUPPORT/Cloudera's+Hadoop+Demo+VM+for+CDH4).
-2. On **your demo VM**, download the dataset by git cloning this repository(source: http://stat-computing.org/dataexpo/2009/the-data.html)
+2. On **your demo VM**, download the dataset by git cloning this repository:
 <pre>
 <code>
 cd ~
@@ -15,7 +15,7 @@ git clone git://github.com/markgrover/bdtc-hive.git
 tar -xzvf bdtc-hive/2008.tar.gz
 </code>
 </pre>
-The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
+The source of this dataset is http://stat-computing.org/dataexpo/2009/the-data.html. The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
 3. Ensure that your virtual machine can connect to the internet.
 FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known bug related to internet connectivity of Demo VM. See [here](http://askubuntu.com/questions/211603/problems-with-nat-adapater-since-upgrade-to-ubuntu-12-10) for more details.
 
