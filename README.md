@@ -63,7 +63,7 @@ hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
 hadoop fs -ls /user/hive/warehouse/flight_data/
 </code>
 </pre>
-* Create hive table
+* Create hive table by typing **hive** on bash and then pasting the following statement:
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data(
