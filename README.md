@@ -45,25 +45,25 @@ By the way, if you re-run this job, it will fail. Why is that?
 
 Load the dataset
 ================
-* On-time flight performance data from 2008
+* On bash: Create a HDFS directory
 <pre>
 <code>
 hadoop fs -mkdir /user/hive/warehouse/flight_data
 </code>
 </pre>
-* Load the data to HDFS
+* On bash: Load the data to HDFS
 <pre>
 <code>
 hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
 </code>
 </pre>
-* Verify it got loaded
+* On bash: Verify it got loaded
 <pre>
 <code>
 hadoop fs -ls /user/hive/warehouse/flight_data/
 </code>
 </pre>
-* Create hive table by typing **hive** on bash and then pasting the following statement:
+* On hive shell: Create hive table:
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data(
@@ -100,6 +100,12 @@ late_aircraft_delay STRING
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LOCATION '/user/hive/warehouse/flight_data';
+</code>
+</pre>
+* On hive shell: Ensure the table got created by running the following command:
+<pre>
+<code>
+show tables;
 </code>
 </pre>
 
