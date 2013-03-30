@@ -9,10 +9,10 @@ To do before the presentation
 2. On your demo VM, download the dataset (source: http://stat-computing.org/dataexpo/2009/the-data.html)
 <pre>
 <code>
-mkdir -p ~/hive
-cd ~/hive
-wget http://stat-computing.org/dataexpo/2009/2008.csv.bz2
-bzip2 -d 2008.csv.bz2
+cd ~
+git clone git://github.com/markgrover/bdtc-hive.git
+(This may take a minute because of the large dataset).
+tar -xzvf 2008.tar.gz
 </code>
 </pre>
 The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
