@@ -6,13 +6,13 @@ Presentation on Apache Hive at Big Data TechCon
 To do before the presentation
 =============================
 1. Set up and install Hadoop and Hive. Easiest way is to actually download a demo VM with Hadoop, Hive and HBase installed. Cloudera Demo VMs are available [here](https://ccp.cloudera.com/display/SUPPORT/Cloudera's+Hadoop+Demo+VM+for+CDH4).
-2. On your demo VM, download the dataset (source: http://stat-computing.org/dataexpo/2009/the-data.html)
+2. On **your demo VM**, download the dataset by git cloning this repository(source: http://stat-computing.org/dataexpo/2009/the-data.html)
 <pre>
 <code>
 cd ~
 git clone git://github.com/markgrover/bdtc-hive.git
 (This may take a minute because of the large dataset).
-tar -xzvf 2008.tar.gz
+tar -xzvf bdtc-hive/2008.tar.gz
 </code>
 </pre>
 The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
