@@ -51,10 +51,16 @@ Load the dataset
 hadoop fs -mkdir /user/hive/warehouse/flight_data
 </code>
 </pre>
+* Load the data to HDFS
+<pre>
+<code>
+hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
+</code>
+</pre>
 * Verify it got loaded
 <pre>
 <code>
-hadoop fs -ls /
+hadoop fs -ls /user/hive/warehouse/flight_data/
 </code>
 </pre>
 * Create hive table
