@@ -236,7 +236,9 @@ WHERE
 SHOW PARTITIONS flight_data_p;
 </code>
 </pre>
-* On Hive shell: compare the response times for a query with a predicate on month for the unpartitioned and partitioned table:
+* On Hive shell: compare the response times for a query with a predicate on month for the unpartitioned and partitioned table.
+
+First, run the query on the non-partitioned table:
 <pre>
 <code>
 SELECT
@@ -245,7 +247,12 @@ FROM
    flight_data
 WHERE
    month=1;
+</code>
+</pre>
 
+Now, run the same query on the partitioned table:
+<pre>
+<code>
 SELECT
    avg(arr_delay)
 FROM
