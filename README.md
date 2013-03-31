@@ -154,7 +154,7 @@ LOCATION '/user/hive/warehouse/flight_data_p';
 * On hive shell: Populate some partitions of this new partitioned table from the existing non-partitioned table:
 <pre>
 <code>
-INSERT INTO flight_data_p PARTITION(month=1)
+INSERT INTO TABLE flight_data_p PARTITION(month=1)
 SELECT
    year,
    day,
@@ -188,6 +188,71 @@ FROM
    flight_data
 WHERE
    month=1;
+</code>
+</pre>
+
+* On Hive shell: Do the same for another month:
+<pre>
+<code>
+INSERT INTO TABLE flight_data_p PARTITION(month=2)
+SELECT
+   year,
+   day,
+   day_of_week,
+   dep_time,
+   crs_dep_time,
+   arr_time,
+   crs_arr_time,
+   unique_carrier,
+   flight_num,
+   tail_num,
+   actual_elapsed_time,
+   crs_elapsed_time,
+   air_time,
+   arr_delay,
+   dep_delay,
+   origin,
+   dest,
+   distance,
+   taxi_in,
+   taxi_out,
+   cancelled,
+   cancellation_code,
+   diverted,
+   carrier_delay,
+   weather_delay,
+   nas_delay,
+   security_delay,
+   late_aircraft_delay
+FROM
+   flight_data
+WHERE
+   month=2;
+</code>
+</pre>
+* On hive shell: verify the partitions got created:
+<pre>
+<code>
+SHOW PARTITIONS flight_data_p;
+</code>
+</pre>
+* On Hive shell: compare the response times for a query with a predicate on month for the unpartitioned and partitioned table:
+<pre>
+<code>
+SELECT
+   avg(arr_delay)
+FROM
+   flight_data
+WHERE
+   month=1;
+
+SELECT
+   avg(arr_delay)
+FROM
+   flight_data_p
+WHERE
+   month=1;
+
 </code>
 </pre>
 
