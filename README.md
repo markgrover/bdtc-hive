@@ -279,7 +279,7 @@ SET hive.exec.dynamic.partition.mode=nonstrict;
 * On Hive shell: populate all partitions of the partitioned table from the unpartitioned table
 <pre>
 <code>
-INSERT OVERWRITE INTO TABLE flight_data_p PARTITION(month)
+INSERT OVERWRITE TABLE flight_data_p PARTITION(month)
 SELECT
    year,
    day,
