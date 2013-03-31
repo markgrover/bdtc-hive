@@ -350,7 +350,6 @@ hadoop dfsadmin -safemode leave
 To configure your hive-site.xml to use MySQL:
 
 <pre>
-<code>
     <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:mysql://127.0.0.1/metastore?createDatabaseIfNotExist=true</value>
@@ -372,5 +371,4 @@ To configure your hive-site.xml to use MySQL:
     <name>javax.jdo.option.ConnectionPassword</name>
     <value>hive</value>
     </property>
-</code>
 </pre>
