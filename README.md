@@ -310,6 +310,29 @@ FROM
 </pre>
 </code>
 
+Joins
+=====
+* On bash: load the second dataset related to airport codes:
+<pre>
+<code>
+hadoop fs -mkdir /user/hive/warehouse/airports
+hadoop fs -put airports.csv /user/hive/warehouse/airports/airports.csv
+</code>
+</pre>
+* On hive shell: create the airports table
+<pre>
+<code>
+CREATE EXTERNAL TABLE airports(
+   name STRING,
+   country STRING,
+   area_code INT,
+   code STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/user/hive/warehouse/airports';
+</code>
+</pre>
+
 Miscellaneous notes
 ===================
 To disable safe mode:
