@@ -6,16 +6,18 @@ Presentation on Apache Hive at Big Data TechCon
 To do before the presentation
 =============================
 1. Set up and install Hadoop and Hive. Easiest way is to actually download a demo VM with Hadoop, Hive and HBase installed. Cloudera Demo VMs are available [here](https://ccp.cloudera.com/display/SUPPORT/Cloudera's+Hadoop+Demo+VM+for+CDH4).
-2. On **your demo VM**, download the dataset by git cloning this repository:
+2. On **your demo VM**, download the datasets by git cloning this repository:
 <pre>
 <code>
 cd ~
 git clone git://github.com/markgrover/bdtc-hive.git
-(This may take a minute because of the large dataset).
-tar -xzvf bdtc-hive/2008.tar.gz
+(This may take a minute because of the large datasets).
 </code>
 </pre>
-The source of this dataset is http://stat-computing.org/dataexpo/2009/the-data.html. The dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236).
+There are 2 datasets in the repo.
+
+a) The first dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236). The source of this dataset is http://stat-computing.org/dataexpo/2009/the-data.html. The dataset 
+b) The second dataset contains listing of various airport codes in continental US, Puerto Rico and US Virgin Islands. The original source of this dataset is 
 3. Ensure that your virtual machine can connect to the internet.
 FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known bug related to internet connectivity of Demo VM. See [here](http://askubuntu.com/questions/211603/problems-with-nat-adapater-since-upgrade-to-ubuntu-12-10) for more details.
 
@@ -43,17 +45,18 @@ hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop*examples.jar wordcount input ou
 </pre>
 By the way, if you re-run this job, it will fail. Why is that?
 
-Load the dataset
-================
+Load the flight dataset
+=======================
 * On bash: Create a HDFS directory
 <pre>
 <code>
 hadoop fs -mkdir /user/hive/warehouse/flight_data
 </code>
 </pre>
-* On bash: Load the data to HDFS
+* On bash: Untar the flight dataset and load it to HDFS
 <pre>
 <code>
+tar -xzvf bdtc-hive/2008.tar.gz
 hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
 </code>
 </pre>
