@@ -302,6 +302,7 @@ FROM
    flight_data;
 </pre>
 </code>
+
 Miscellaneous notes
 ===================
 To disable safe mode:
