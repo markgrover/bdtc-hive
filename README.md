@@ -338,6 +338,41 @@ LOCATION '/user/hive/warehouse/airports';
 </code>
 </pre>
 
+* On hive shell: run a join query to find the average delay in January 2008 for each airport and to print out the airport's name:
+<pre>
+<code>
+SELECT
+   name,
+   AVG(arr_delay)
+FROM
+   flight_data_p f
+   INNER JOIN airports a
+   ON (f.origin=a.code)
+WHERE
+   month=1
+GROUP BY
+   name;
+</code>
+</pre>
+
+* On hive shell: set an optimization property and run the same query:
+<pre>
+<code>
+SET hive.auto.convert.join=true;
+SELECT
+   name,
+   AVG(arr_delay)
+FROM
+   flight_data_p f
+   INNER JOIN airports a
+   ON (f.origin=a.code)
+WHERE
+   month=1
+GROUP BY
+   name;
+</code>
+</pre>
+
 Miscellaneous notes
 ===================
 To disable safe mode:
