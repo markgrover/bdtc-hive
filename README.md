@@ -472,7 +472,17 @@ FROM
 
 Custom UDFs
 ===========
-* We need maven to build code, so let's install maven. On bash shell, type:
+* Let's first use a built-in UDF. On hive shell:
+<pre>
+<code>
+SELECT
+  lower(origin)
+FROM
+   flight_data
+LIMIT 10;
+</code>
+</pre>
+* Now, let's write our own UDF. However, we need maven to build code, so let's install maven. On bash shell, type:
 <pre>
 <code>
 cd ~
@@ -490,6 +500,27 @@ cd hive-translate
 mvn clean package
 </code>
 </pre>
+* Now, let's use the UDF we just compiled. On hive shell, type the following to register the UDF with Hive:
+<pre>
+<code>
+ADD JAR target/translate-udf-0.0.1-SNAPSHOT.jar;
+CREATE TEMPORARY FUNCTION my_translate AS 'org.mgrover.hive.translate.GenericUDFTranslate';
+</code>
+</pre>
+
+* On Hive shell: type the following to use the newly created UDF:
+<pre>
+<code>
+SELECT
+   my_translate('abc','a','A')
+FROM
+   flight_data
+LIMIT 10;
+</code>
+</pre>
+
+* On web browser: let's browse through the UDF code:
+https://github.com/markgrover/hive-translate/blob/master/src/main/java/org/mgrover/hive/translate/GenericUDFTranslate.java
 
 Miscellaneous notes
 ===================
