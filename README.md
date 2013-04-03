@@ -470,6 +470,27 @@ FROM
 
 * Compare the time betwen sampling on non-bucketed table with that on bucketed table
 
+Custom UDFs
+===========
+* We need maven to build code, so let's install maven. On bash shell, type:
+<pre>
+<code>
+cd ~
+wget mirror.nexcess.net/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
+tar -xzvf apache-maven-3.0.5-bin.tar.gz
+export PATH=$PATH:`pwd`/apache-maven-3.0.5/bin
+</code>
+</pre>
+* Write some code. For now, let's just download it. On bash, git clone this repo
+<pre>
+<code>
+cd ~
+git clone git://github.com/markgrover/hive-translate.git
+cd hive-translate
+mvn clean package
+</code>
+</pre>
+
 Miscellaneous notes
 ===================
 To disable safe mode:
