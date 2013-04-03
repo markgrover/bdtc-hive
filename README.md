@@ -373,8 +373,18 @@ GROUP BY
 </code>
 </pre>
 
-Bucketing
-=========
+Sampling and Bucketing
+======================
+* On Hive shell, let's pick a sample of the existing flight_data table based on unique_carrier column:
+<pre>
+<code>
+SELECT
+   *
+FROM
+   flight_data TABLESAMPLE(BUCKET 1 OUT OF 4 ON unique_carrier)s LIMIT 100;
+</code>
+</pre>
+
 * On Hive shell: create a bucketed table:
 <pre>
 <code>
@@ -440,6 +450,25 @@ FROM
 SET hive.enforce.bucketing=false;
 </code>
 </pre>
+
+* On bash: verify the number of files in the HDFS directory corresponding to flight_data_b table.
+<pre>
+<code>
+hadoop fs -ls /user/hive/warehouse/flight_data_b/
+</code>
+</pre>
+
+* On hive shell: run a sampling query on the bucketed table
+<pre>
+<code>
+SELECT
+   *
+FROM
+   flight_data_b TABLESAMPLE(BUCKET 1 OUT OF 4  ON unique_carrier)s LIMIT 100;
+</code>
+</pre>
+
+* Compare the time betwen sampling on non-bucketed table with that on bucketed table
 
 Miscellaneous notes
 ===================
