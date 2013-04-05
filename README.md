@@ -110,16 +110,21 @@ FIELDS TERMINATED BY ','
 LOCATION '/user/hive/warehouse/flight_data';
 </code>
 </pre>
+
 * On hive shell: Ensure that the create and load table were successful by running the following command:
 <pre>
 <code>
 SHOW TABLES;
-SELECT * FROM flight_data LIMIT 10; 
+SELECT
+   *
+FROM
+   flight_data
+   LIMIT 10; 
 </code>
 </pre>
 
 Partitioning in Hive
-===================
+====================
 * On hive shell: Create a new table, *flight_data_p*, partitioned by month
 <pre>
 <code>
