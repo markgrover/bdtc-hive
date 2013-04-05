@@ -58,6 +58,7 @@ Load the flight dataset
 hadoop fs -mkdir /user/hive/warehouse/flight_data
 </code>
 </pre>
+
 * On bash: Untar the flight dataset and load it to HDFS
 <pre>
 <code>
@@ -65,45 +66,47 @@ tar -xzvf bdtc-hive/2008.tar.gz
 hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
 </code>
 </pre>
+
 * On bash: Verify it got loaded
 <pre>
 <code>
 hadoop fs -ls /user/hive/warehouse/flight_data/
 </code>
 </pre>
+
 * On hive shell: Create hive table, *flight_data*:
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data(
-year INT,
-month INT,
-day INT,
-day_of_week INT,
-dep_time INT,
-crs_dep_time INT,
-arr_time INT,
-crs_arr_time INT,
-unique_carrier STRING,
-flight_num INT,
-tail_num STRING,
-actual_elapsed_time INT,
-crs_elapsed_time INT,
-air_time INT,
-arr_delay INT,
-dep_delay INT,
-origin STRING,
-dest STRING,
-distance INT,
-taxi_in INT,
-taxi_out INT,
-cancelled INT,
-cancellation_code STRING,
-diverted INT,
-carrier_delay STRING,
-weather_delay STRING,
-nas_delay STRING,
-security_delay STRING,
-late_aircraft_delay STRING
+   year INT,
+   month INT,
+   day INT,
+   day_of_week INT,
+   dep_time INT,
+   crs_dep_time INT,
+   arr_time INT,
+   crs_arr_time INT,
+   unique_carrier STRING,
+   flight_num INT,
+   tail_num STRING,
+   actual_elapsed_time INT,
+   crs_elapsed_time INT,
+   air_time INT,
+   arr_delay INT,
+   dep_delay INT,
+   origin STRING,
+   dest STRING,
+   distance INT,
+   taxi_in INT,
+   taxi_out INT,
+   cancelled INT,
+   cancellation_code STRING,
+   diverted INT,
+   carrier_delay STRING,
+   weather_delay STRING,
+   nas_delay STRING,
+   security_delay STRING,
+   late_aircraft_delay STRING
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
@@ -119,7 +122,7 @@ SELECT
    *
 FROM
    flight_data
-   LIMIT 10; 
+LIMIT 10; 
 </code>
 </pre>
 
@@ -129,34 +132,34 @@ Partitioning in Hive
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data_p(
-year INT,
-day INT,
-day_of_week INT,
-dep_time INT,
-crs_dep_time INT,
-arr_time INT,
-crs_arr_time INT,
-unique_carrier STRING,
-flight_num INT,
-tail_num STRING,
-actual_elapsed_time INT,
-crs_elapsed_time INT,
-air_time INT,
-arr_delay INT,
-dep_delay INT,
-origin STRING,
-dest STRING,
-distance INT,
-taxi_in INT,
-taxi_out INT,
-cancelled INT,
-cancellation_code STRING,
-diverted INT,
-carrier_delay STRING,
-weather_delay STRING,
-nas_delay STRING,
-security_delay STRING,
-late_aircraft_delay STRING
+   year INT,
+   day INT,
+   day_of_week INT,
+   dep_time INT,
+   crs_dep_time INT,
+   arr_time INT,
+   crs_arr_time INT,
+   unique_carrier STRING,
+   flight_num INT,
+   tail_num STRING,
+   actual_elapsed_time INT,
+   crs_elapsed_time INT,
+   air_time INT,
+   arr_delay INT,
+   dep_delay INT,
+   origin STRING,
+   dest STRING,
+   distance INT,
+   taxi_in INT,
+   taxi_out INT,
+   cancelled INT,
+   cancellation_code STRING,
+   diverted INT,
+   carrier_delay STRING,
+   weather_delay STRING,
+   nas_delay STRING,
+   security_delay STRING,
+   late_aircraft_delay STRING
 )
 PARTITIONED BY (month int)
 ROW FORMAT DELIMITED
@@ -284,7 +287,6 @@ FROM
 WHERE
    month=1
    AND origin='SFO';
-
 </code>
 </pre>
 
@@ -413,35 +415,35 @@ FROM
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data_b(
-year INT,
-month INT,
-day INT,
-day_of_week INT,
-dep_time INT,
-crs_dep_time INT,
-arr_time INT,
-crs_arr_time INT,
-unique_carrier STRING,
-flight_num INT,
-tail_num STRING,
-actual_elapsed_time INT,
-crs_elapsed_time INT,
-air_time INT,
-arr_delay INT,
-dep_delay INT,
-origin STRING,
-dest STRING,
-distance INT,
-taxi_in INT,
-taxi_out INT,
-cancelled INT,
-cancellation_code STRING,
-diverted INT,
-carrier_delay STRING,
-weather_delay STRING,
-nas_delay STRING,
-security_delay STRING,
-late_aircraft_delay STRING
+   year INT,
+   month INT,
+   day INT,
+   day_of_week INT,
+   dep_time INT,
+   crs_dep_time INT,
+   arr_time INT,
+   crs_arr_time INT,
+   unique_carrier STRING,
+   flight_num INT,
+   tail_num STRING,
+   actual_elapsed_time INT,
+   crs_elapsed_time INT,
+   air_time INT,
+   arr_delay INT,
+   dep_delay INT,
+   origin STRING,
+   dest STRING,
+   distance INT,
+   taxi_in INT,
+   taxi_out INT,
+   cancelled INT,
+   cancellation_code STRING,
+   diverted INT,
+   carrier_delay STRING,
+   weather_delay STRING,
+   nas_delay STRING,
+   security_delay STRING,
+   late_aircraft_delay STRING
 )
 CLUSTERED BY (unique_carrier) INTO 4 BUCKETS
 ROW FORMAT DELIMITED
@@ -453,7 +455,7 @@ LOCATION '/user/hive/warehouse/flight_data_b';
 * Now, let's populate this table. Before we do that, we need to populate a property that would ensure the number of reducers is the same as number of buckets in the destination table. On hive shell, set the following property:
 <pre>
 <code>
-set hive.enforce.bucketing = true;
+SET hive.enforce.bucketing = true;
 </code>
 </pre>
 
@@ -471,7 +473,7 @@ FROM
 * Disable the enforce bucketing property back to its default value:
 <pre>
 <code>
-SET hive.enforce.bucketing=false;
+SET hive.enforce.bucketing = false;
 </code>
 </pre>
 
@@ -500,21 +502,23 @@ Custom UDFs
 <pre>
 <code>
 SELECT
-  lower(origin)
+  LOWER(origin)
 FROM
    flight_data
 LIMIT 10;
 </code>
 </pre>
+
 * Now, let's write our own UDF. However, we need maven to build code, so let's install maven. On bash shell, type:
 <pre>
 <code>
 cd ~
 wget mirror.nexcess.net/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
 tar -xzvf apache-maven-3.0.5-bin.tar.gz
-export PATH=$PATH:`pwd`/apache-maven-3.0.5/bin
+export PATH=$PATH:$(pwd)/apache-maven-3.0.5/bin
 </code>
 </pre>
+
 * Write some code. For now, let's just download it. On bash, git clone this repo
 <pre>
 <code>
@@ -524,6 +528,7 @@ cd hive-translate
 mvn clean package
 </code>
 </pre>
+
 * Now, let's use the UDF we just compiled. On hive shell, type the following to register the UDF with Hive:
 <pre>
 <code>
@@ -558,6 +563,7 @@ hadoop dfsadmin -safemode leave
 To configure your hive-site.xml to use MySQL:
 
 <pre>
+<code>
     <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:mysql://127.0.0.1/metastore?createDatabaseIfNotExist=true</value>
@@ -579,4 +585,5 @@ To configure your hive-site.xml to use MySQL:
     <name>javax.jdo.option.ConnectionPassword</name>
     <value>hive</value>
     </property>
+</code>
 </pre>
