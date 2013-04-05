@@ -29,18 +29,23 @@ FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known b
 Run Hadoop examples
 ===============
 * Verify contents of HDFS
+* 
 <pre>
 <code>
 hadoop fs -ls /
 </code>
 </pre>
+
 * Pi job
+
 <pre>
 <code>
 hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop*examples.jar pi 10 100
 </code>
 </pre>
+
 * Wordcount job
+
 <pre>
 <code>
 hadoop fs -mkdir input
@@ -52,7 +57,9 @@ By the way, if you re-run this job, it will fail. Why is that?
 
 Load the flight dataset
 =======================
+
 * On bash: Create a HDFS directory
+
 <pre>
 <code>
 hadoop fs -mkdir /user/hive/warehouse/flight_data
@@ -60,6 +67,7 @@ hadoop fs -mkdir /user/hive/warehouse/flight_data
 </pre>
 
 * On bash: Untar the flight dataset and load it to HDFS
+
 <pre>
 <code>
 tar -xzvf bdtc-hive/2008.tar.gz
@@ -68,6 +76,7 @@ hadoop fs -put 2008.csv /user/hive/warehouse/flight_data/2008.csv
 </pre>
 
 * On bash: Verify it got loaded
+
 <pre>
 <code>
 hadoop fs -ls /user/hive/warehouse/flight_data/
@@ -75,6 +84,7 @@ hadoop fs -ls /user/hive/warehouse/flight_data/
 </pre>
 
 * On hive shell: Create hive table, *flight_data*:
+
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data(
@@ -115,6 +125,7 @@ LOCATION '/user/hive/warehouse/flight_data';
 </pre>
 
 * On hive shell: Ensure that the create and load table were successful by running the following command:
+
 <pre>
 <code>
 SHOW TABLES;
@@ -129,6 +140,7 @@ LIMIT 10;
 Partitioning in Hive
 ====================
 * On hive shell: Create a new table, *flight_data_p*, partitioned by month
+
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data_p(
@@ -169,6 +181,7 @@ LOCATION '/user/hive/warehouse/flight_data_p';
 </pre>
 
 * On hive shell: Populate some partitions of this new partitioned table from the existing non-partitioned table:
+
 <pre>
 <code>
 INSERT INTO TABLE flight_data_p PARTITION(month=1)
@@ -209,6 +222,7 @@ WHERE
 </pre>
 
 * On Hive shell: Do the same for another month:
+
 <pre>
 <code>
 INSERT INTO TABLE flight_data_p PARTITION(month=2)
@@ -249,6 +263,7 @@ WHERE
 </pre>
 
 * On hive shell: verify the partitions got created:
+
 <pre>
 <code>
 SHOW PARTITIONS flight_data_p;
@@ -256,6 +271,7 @@ SHOW PARTITIONS flight_data_p;
 </pre>
 
 On bash: verify them on HDFS as well:
+
 <pre>
 <code>
 hadoop fs -ls /user/hive/warehouse/flight_data_p/
@@ -265,6 +281,7 @@ hadoop fs -ls /user/hive/warehouse/flight_data_p/
 * On Hive shell: compare the response times for a query with a predicate on month for the unpartitioned and partitioned table.
 
 First, run the query on the non-partitioned table:
+
 <pre>
 <code>
 SELECT
@@ -278,6 +295,7 @@ WHERE
 </pre>
 
 Now, run the same query on the partitioned table:
+
 <pre>
 <code>
 SELECT
@@ -293,12 +311,15 @@ WHERE
 Dynamic partitioning
 ====================
 * On hive shell: set some properties to enable dynamic partitioning
+
 <pre>
 <code>
 SET hive.exec.dynamic.partition.mode=nonstrict;
 </code>
 </pre>
+
 * On Hive shell: populate all partitions of the partitioned table from the unpartitioned table
+
 <pre>
 <code>
 INSERT OVERWRITE TABLE flight_data_p PARTITION(month)
@@ -340,13 +361,16 @@ FROM
 Joins
 =====
 * On bash: load the second dataset related to airport codes:
+
 <pre>
 <code>
 hadoop fs -mkdir /user/hive/warehouse/airports
 hadoop fs -put airports.csv /user/hive/warehouse/airports/airports.csv
 </code>
 </pre>
+
 * On hive shell: create the airports table
+
 <pre>
 <code>
 CREATE EXTERNAL TABLE airports(
@@ -361,10 +385,19 @@ LOCATION '/user/hive/warehouse/airports';
 </pre>
 
 * On hive shell, list some rows from the airports table:
-* <pre> <code>
-SELECT * from airports limit 10
+
+<pre>
+<code>
+SELECT
+   *
+FROM
+   airports
+LIMIT 10
+</pre>
+<code>
 
 * On hive shell: run a join query to find the average delay in January 2008 for each airport and to print out the airport's name:
+
 <pre>
 <code>
 SELECT
@@ -382,6 +415,7 @@ GROUP BY
 </pre>
 
 * On hive shell: set an optimization property and run the same query:
+
 <pre>
 <code>
 SET hive.auto.convert.join=true;
@@ -402,6 +436,7 @@ GROUP BY
 Sampling and Bucketing
 ======================
 * On Hive shell, let's pick a sample of the existing flight_data table based on unique_carrier column:
+
 <pre>
 <code>
 SELECT
@@ -412,6 +447,7 @@ FROM
 </pre>
 
 * On Hive shell: create a bucketed table:
+
 <pre>
 <code>
 CREATE EXTERNAL TABLE flight_data_b(
@@ -453,6 +489,7 @@ LOCATION '/user/hive/warehouse/flight_data_b';
 </pre>
 
 * Now, let's populate this table. Before we do that, we need to populate a property that would ensure the number of reducers is the same as number of buckets in the destination table. On hive shell, set the following property:
+
 <pre>
 <code>
 SET hive.enforce.bucketing = true;
@@ -460,6 +497,7 @@ SET hive.enforce.bucketing = true;
 </pre>
 
 * On hive shell: run the command to populate the bucketed table (it's no different than running the command on a regular table.
+
 <pre>
 <code>
 INSERT OVERWRITE TABLE flight_data_b
@@ -471,6 +509,7 @@ FROM
 </pre>
 
 * Disable the enforce bucketing property back to its default value:
+
 <pre>
 <code>
 SET hive.enforce.bucketing = false;
@@ -478,6 +517,7 @@ SET hive.enforce.bucketing = false;
 </pre>
 
 * On bash: verify the number of files in the HDFS directory corresponding to flight_data_b table.
+
 <pre>
 <code>
 hadoop fs -ls /user/hive/warehouse/flight_data_b/
@@ -485,6 +525,7 @@ hadoop fs -ls /user/hive/warehouse/flight_data_b/
 </pre>
 
 * On hive shell: run a sampling query on the bucketed table
+
 <pre>
 <code>
 SELECT
@@ -499,6 +540,7 @@ FROM
 Custom UDFs
 ===========
 * Let's first use a built-in UDF. On hive shell:
+
 <pre>
 <code>
 SELECT
@@ -510,6 +552,7 @@ LIMIT 10;
 </pre>
 
 * Now, let's write our own UDF. However, we need maven to build code, so let's install maven. On bash shell, type:
+
 <pre>
 <code>
 cd ~
@@ -520,6 +563,7 @@ export PATH=$PATH:$(pwd)/apache-maven-3.0.5/bin
 </pre>
 
 * Write some code. For now, let's just download it. On bash, git clone this repo
+
 <pre>
 <code>
 cd ~
@@ -530,6 +574,7 @@ mvn clean package
 </pre>
 
 * Now, let's use the UDF we just compiled. On hive shell, type the following to register the UDF with Hive:
+
 <pre>
 <code>
 ADD JAR target/translate-udf-0.0.1-SNAPSHOT.jar;
@@ -538,6 +583,7 @@ CREATE TEMPORARY FUNCTION my_translate AS 'org.mgrover.hive.translate.GenericUDF
 </pre>
 
 * On Hive shell: type the following to use the newly created UDF:
+
 <pre>
 <code>
 SELECT
