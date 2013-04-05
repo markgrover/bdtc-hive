@@ -338,6 +338,10 @@ LOCATION '/user/hive/warehouse/airports';
 </code>
 </pre>
 
+* On hive shell, list some rows from the airports table:
+* <pre> <code>
+SELECT * from airports limit 10
+
 * On hive shell: run a join query to find the average delay in January 2008 for each airport and to print out the airport's name:
 <pre>
 <code>
