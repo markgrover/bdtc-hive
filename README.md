@@ -7,6 +7,7 @@ To do before the presentation
 =============================
 1. Set up and install Hadoop and Hive. Easiest way is to actually download a demo VM with Hadoop, Hive and HBase installed. Cloudera Demo VMs are available [here](https://ccp.cloudera.com/display/SUPPORT/Cloudera's+Hadoop+Demo+VM+for+CDH4).
 2. On **your demo VM**, download the datasets by git cloning this repository:
+
 <pre>
 <code>
 cd ~
@@ -29,7 +30,7 @@ FYI, if you are running VirtualBox on Ubuntu 12.10, you may be hitting a known b
 Run Hadoop examples
 ===============
 * Verify contents of HDFS
-* 
+
 <pre>
 <code>
 hadoop fs -ls /
