@@ -251,7 +251,8 @@ SELECT
 FROM
    flight_data
 WHERE
-   month=1;
+   month=1
+   AND origin='SFO';
 </code>
 </pre>
 
@@ -263,7 +264,8 @@ SELECT
 FROM
    flight_data_p
 WHERE
-   month=1;
+   month=1
+   AND origin='SFO';
 
 </code>
 </pre>
