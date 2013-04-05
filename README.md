@@ -10,10 +10,13 @@ To do before the presentation
 <pre>
 <code>
 cd ~
+# Install git in case you don't already have it
+sudo yum install git
 git clone git://github.com/markgrover/bdtc-hive.git
-(This may take a minute because of the large datasets).
+# This may take a minute because of the large datasets
 </code>
 </pre>
+
 There are 2 datasets in the repo.
 
     a) The first dataset contains on-time flight performance data from 2008, originally released by [Research and Innovative Technology Administration (RITA)](http://www.transtats.bts.gov/Fields.asp?Table_ID=236). The source of this dataset is http://stat-computing.org/dataexpo/2009/the-data.html. The dataset 
@@ -156,6 +159,7 @@ FIELDS TERMINATED BY ','
 LOCATION '/user/hive/warehouse/flight_data_p';
 </code>
 </pre>
+
 * On hive shell: Populate some partitions of this new partitioned table from the existing non-partitioned table:
 <pre>
 <code>
@@ -235,12 +239,21 @@ WHERE
    month=2;
 </code>
 </pre>
+
 * On hive shell: verify the partitions got created:
 <pre>
 <code>
 SHOW PARTITIONS flight_data_p;
 </code>
 </pre>
+
+On bash: verify them on HDFS as well:
+<pre>
+<code>
+hadoop fs -ls /user/hive/warehouse/flight_data_p/
+</code>
+</pre>
+
 * On Hive shell: compare the response times for a query with a predicate on month for the unpartitioned and partitioned table.
 
 First, run the query on the non-partitioned table:
