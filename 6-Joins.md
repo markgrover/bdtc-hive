@@ -33,8 +33,8 @@ SELECT
 FROM
    airports
 LIMIT 10
+</code>
 </pre>
-<code>
 
 * On hive shell: run a join query to find the average delay in January 2008 for each airport and to print out the airport's name:
 
@@ -54,7 +54,27 @@ GROUP BY
 </code>
 </pre>
 
-* On hive shell: set an optimization property and run the same query:
+* Now, let's run a query to run Map-side join using query hint:
+
+<pre>
+<code>
+SELECT
+   /*+ MAPJOIN(airports) */
+   name,
+   AVG(arr_delay)
+FROM
+   flight_data_p f
+   INNER JOIN airports a
+   ON (f.origin=a.code)
+WHERE
+   month=1
+GROUP BY
+   name;
+</code>
+</pre>
+
+
+* On hive shell: set an optimization property and run the same query to autoconvert to map join:
 
 <pre>
 <code>
