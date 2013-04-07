@@ -1,7 +1,7 @@
 bdtc-hive
 =========
 
-Presentation on Apache Hive at Big Data TechCon
+Presentation on Apache Hive at Big Data TechCon 2013
 
 Topics covered
 ==============
@@ -15,3 +15,10 @@ Topics covered
 7. [Sampling and Bucketing](https://github.com/markgrover/bdtc-hive/blob/master/7-SamplingAndBucketing.md)
 8. [Custom UDFs in Hive](https://github.com/markgrover/bdtc-hive/blob/master/8-CustomUdfs.md)
 9. [Miscellaneous](https://github.com/markgrover/bdtc-hive/blob/master/9-Misc.md)
+
+Other files in the repository
+=============================
+* [Grover Hive presentation.pdf](https://github.com/markgrover/bdtc-hive/blob/master/Grover%20Hive%20presentation.pdf): Copy of the slides used in the presentation
+* [2008.tar.gz](https://github.com/markgrover/bdtc-hive/blob/master/2008.tar.gz): Flight delay dataset from 2008. More details in [Load Data](https://github.com/markgrover/bdtc-hive/blob/master/3-LoadData.md) section.
+* [airports.csv](https://github.com/markgrover/bdtc-hive/blob/master/airports.csv): Dataset linking airport codes to their full names. More details in [Load Data](https://github.com/markgrover/bdtc-hive/blob/master/3-LoadData.md)
+* [README.md](https://github.com/markgrover/bdtc-hive/blob/master/README.md): This file
