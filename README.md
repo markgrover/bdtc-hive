@@ -1,7 +1,7 @@
 bdtc-hive
 =========
 
-Presentation on Apache Hive at Big Data TechCon 2013
+Tutorial on Apache Hive at Big Data TechCon 2013
 
 Topics covered
 ==============
