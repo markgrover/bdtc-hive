@@ -14,7 +14,8 @@ Topics covered
 6. [Joins](https://github.com/markgrover/bdtc-hive/blob/master/6-Joins.md)
 7. [Sampling and Bucketing](https://github.com/markgrover/bdtc-hive/blob/master/7-SamplingAndBucketing.md)
 8. [Custom UDFs in Hive](https://github.com/markgrover/bdtc-hive/blob/master/8-CustomUdfs.md)
-9. [Miscellaneous](https://github.com/markgrover/bdtc-hive/blob/master/9-Misc.md)
+9. [Custom MapReduce Scripts in Hive](https://github.com/markgrover/bdtc-hive/blob/master/9-CustomScripts.md)
+10. [Miscellaneous](https://github.com/markgrover/bdtc-hive/blob/master/10-Misc.md)
 
 Other files in the repository
 =============================
