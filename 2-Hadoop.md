@@ -15,7 +15,7 @@ hadoop fs -ls /
 
 <pre>
 <code>
-hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop*examples.jar pi 10 100
+hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100
 </code>
 </pre>
 
