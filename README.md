@@ -19,7 +19,7 @@ Topics covered
 
 Other files in the repository
 =============================
-* [Grover Hive presentation.pdf](https://github.com/markgrover/bdtc-hive/blob/master/Grover%20Hive%20presentation.pdf): Copy of the slides used in the presentation
+* [Grover Hive presentation.pdf](https://github.com/markgrover/bdtc-hive/blob/master/Grover-Hive%20Presentation.pdf?raw=true): Copy of the slides used in the presentation
 * [2008.tar.gz](https://github.com/markgrover/bdtc-hive/blob/master/2008.tar.gz): Flight delay dataset from 2008. More details in [Introduction](https://github.com/markgrover/bdtc-hive/blob/master/1-Introduction.md) section.
 * [airports.csv](https://github.com/markgrover/bdtc-hive/blob/master/airports.csv): Dataset linking airport codes to their full names. More details in [Introduction](https://github.com/markgrover/bdtc-hive/blob/master/1-Introduction.md) section.
 * [README.md](https://github.com/markgrover/bdtc-hive/blob/master/README.md): This file.
