@@ -5,7 +5,7 @@ Joins
 <pre>
 <code>
 hadoop fs -mkdir /user/hive/warehouse/airports
-hadoop fs -put airports.csv /user/hive/warehouse/airports/airports.csv
+hadoop fs -put bdtc-hive/airports.csv /user/hive/warehouse/airports/airports.csv
 </code>
 </pre>
 
