@@ -48,6 +48,6 @@ sudo reboot
 **Troubleshooting**
 
 If the above fails at some stage, you may want to do the following:
- * Verify that KERN_DIR environment variable points to a valid directory location. If it doesn't, go to run <code>ls /usr/src/kernels</code> to set it to the appropriate subdirectory in there.
+ * Verify that KERN_DIR environment variable points to a valid directory location. If it doesn't, run <code>ls /usr/src/kernels</code> to set it to the appropriate subdirectory in there.
  * If the OpenGL build fails (it failed for me too), simply ignore. It seems pretty benign.
  * See more troubleshooting tips [here](http://www.if-not-true-then-false.com/2010/install-virtualbox-guest-additions-on-fedora-centos-red-hat-rhel/comment-page-1/)
