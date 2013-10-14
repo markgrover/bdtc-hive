@@ -45,7 +45,8 @@ sudo reboot
 </pre>
 </code>
 
-*Troubleshooting*
+**Troubleshooting**
+
 If the above fails at some stage, you may want to do the following:
  * Verify that KERN_DIR environment variable points to a valid directory location. If it doesn't, go to run <code>ls /usr/src/kernels</code> to set it to the appropriate subdirectory in there.
  * If the OpenGL build fails (it failed for me too), simply ignore. It seems pretty benign.
