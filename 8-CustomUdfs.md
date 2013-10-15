@@ -17,9 +17,9 @@ LIMIT 10;
 <pre>
 <code>
 cd ~
-wget mirror.nexcess.net/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
-tar -xzvf apache-maven-3.0.5-bin.tar.gz
-export PATH=$PATH:$(pwd)/apache-maven-3.0.5/bin
+wget http://apache.mirrors.lucidnetworks.net/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+tar -xzvf apache-maven-3.1.1-bin.tar.gz
+export PATH=$PATH:$(pwd)/apache-maven-3.1.1/bin
 </code>
 </pre>
 
