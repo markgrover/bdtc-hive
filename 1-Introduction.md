@@ -51,3 +51,11 @@ If the above fails at some stage, you may want to do the following:
  * Verify that KERN_DIR environment variable points to a valid directory location. If it doesn't, run <code>ls /usr/src/kernels</code> to set it to the appropriate subdirectory in there.
  * If the OpenGL build fails (it failed for me too), simply ignore. It seems pretty benign.
  * See more troubleshooting tips [here](http://www.if-not-true-then-false.com/2010/install-virtualbox-guest-additions-on-fedora-centos-red-hat-rhel/comment-page-1/).
+ 
+Sharing the dataset from your laptop with the VM (Optional)
+-----------------------------------------------------------
+In the event of internet connectivity being slow, you will be provided with a USB stick with the datasets. You can copy the datasets on to your laptop and then share the same with your VM.
+
+These instructions were tried on VirtualBox, the instructions for VMWare would be similar as well.
+Click on *Devices* and then *Shared Folders...*. Then, add a new *Machine Folder*, select *auto-mount*, *read-only*, and *make permanent*. Now reboot your VM.
+After reboot, run <code>df -h</code> on terminal to figure out where the shared folder got auto-mounted and you are all set!
